@@ -1,0 +1,228 @@
+###########################################################
+#
+# Home Assistant Groups
+#
+############################################################
+
+
+default_view:
+  view: yes
+  icon: mdi:home
+  entities:
+    - group.hall_home
+    - group.den
+    - group.living_room
+    - group.boys_room
+    - group.backyard
+    - climate.home
+    - camera.carport
+    - device_tracker.amandas_iphone
+    - device_tracker.justins_iphone8
+#    - group.packages
+
+
+Hall Home:
+  entities:
+  - group.den
+  - group.living_room
+  - group.boys_room
+  - group.backyard
+  - light.side_door_light
+
+Living Room:
+  entities:
+  - light.door_lamp
+  - light.desk_lamp
+  - switch.christmas_tree
+  name: Living Room
+
+den:
+  entities:
+  - light.den_can_lights
+  - light.den_fan_light
+  - switch.den_fan
+  - switch.desk_lights
+  - switch.popcorn_light
+  - switch.desk_led
+  name: Den
+
+Boys Room:
+  entities:
+  - switch.boys_radio
+  name: Boy's Room
+
+Backyard:
+  entities:
+  - switch.patio_lights
+  - switch.fence_lights
+  name: Backyard
+
+Media:
+  entities:
+  - media_player.apple_tv
+  - media_player.pioneer_vsx1121
+  - media_player.kodi
+
+nest:
+  entities:
+  - climate.home
+  - sensor.home_thermostat_temperature
+  - sensor.home_thermostat_target
+  - binary_sensor.home_thermostat_fan
+  - binary_sensor.home_thermostat_has_leaf
+  - binary_sensor.home_thermostat_online
+  - binary_sensor.home_thermostat_is_locked
+  - binary_sensor.home_thermostat_is_using_emergency_heat
+  - sensor.home_thermostat_humidity
+  - sensor.home_thermostat_hvac_state
+  - sensor.home_thermostat_operation_mode
+  name: Nest
+
+#Packages:
+#  entities:
+#  - camera.usps_mail
+#  - sensor.usps_packages
+#  - sensor.usps_mail
+#  name: Deliveries
+
+Weather:
+  entities:
+  - sensor.yweather_current
+  - sensor.yweather_temperature
+  - sensor.yweather_temperature_max
+  - sensor.yweather_temperature_min
+  - sensor.yweather_humidity
+  - sensor.yweather_pressure
+  - sensor.dark_sky_nearest_storm_distance
+  - sensor.yweather_visibility
+  - sensor.yweather_wind_speed
+  - sun.sun
+  - camera.tyler_radar
+  name: Weather
+
+system:
+  entities:
+  - sensor.cpu_used
+  - sensor.disk_used_
+  - sensor.disk_free_
+  - sensor.ram_available
+  - sensor.ram_free
+  - sensor.ipv4_address_eth0
+  - sensor.last_boot
+  - sensor.since_last_boot
+  name: System
+
+date and time:
+  entities:
+  - sensor.date
+  - sensor.time
+  name: Date and Time
+
+Network:
+  entities:
+  - sensor.speedtest_download
+  - sensor.speedtest_upload
+  - sensor.speedtest_ping
+  name: Network
+
+Household:
+  name: Household
+  entities:
+  - group.justin_devices
+  - group.amanda_devices
+
+Justin Devices:
+  name: Justin
+  entities:
+  - device_tracker.justins_iphone8
+
+Amanda Devices:
+  name: Amanda
+  entities:
+  - device_tracker.amandas_iphone
+
+Automations:
+  name: Automations
+  entities:
+  - automation.amanda_got_the_kids
+  - automation.amanda_leave_ut
+  - automation.jj_picked_up_the_kids
+  - automation.justin_leave_scso
+  - automation.living_room_lights_off
+  - automation.living_room_lights_on
+  - automation.login_failure
+  - automation.printer_done
+  - group.boys_radio
+  - scene.goodnight
+  - scene.movie_mode
+
+Boys Radio:
+  name: Boys Radio
+  entities:
+  - automation.boys_radio
+  - automation.boys_radio_2
+
+Printer:
+  name: 3D Printer
+  entities:
+  - switch.octopi
+  - sensor.octoprint_current_state
+  - sensor.octoprint_job_percentage
+  - sensor.octoprint_actual_bed_temp
+  - sensor.octoprint_target_bed_temp
+  - sensor.octoprint_actual_tool0_temp
+  - sensor.octoprint_target_tool0_temp
+  - camera.3d_printer
+
+############################################################
+#
+# Views
+#
+############################################################
+
+Nest_view:
+  view: yes
+  name: Nest
+  icon: mdi:air-conditioner
+  entities:
+    - group.nest
+
+Media_view:
+  view: yes
+  name: Media
+  icon: mdi:theater
+  entities:
+    - group.media
+
+Weather_view:
+  view: yes
+  name: Weather
+  icon: mdi:weather-partlycloudy
+  entities:
+    - group.weather
+
+System_view:
+  view: yes
+  name: System
+  icon: mdi:settings
+  entities:
+    - group.system
+    - group.network
+    - group.date_and_time
+    - switch.htpc
+    - switch.justins_pc
+
+Automation_view:
+  view: yes
+  name: Automations
+  icon: mdi:brightness-auto
+  entities:
+    - group.automations
+
+Printer_view:
+  view: yes
+  name: 3D Printer
+  icon: mdi:printer-3d
+  entities:
+    - group.printer
+

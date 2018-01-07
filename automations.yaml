@@ -1,0 +1,213 @@
+###########################################################
+#
+# Home Assistant Automations
+#
+############################################################
+
+######## System #########
+
+- alias: login failure
+  trigger:
+    platform: state
+    entity_id: persistent_notification.httplogin
+  condition:
+    condition: template
+    value_template: '{{ trigger.to_state.state != off }}'
+  action:
+    - service: notify.ios_iphone
+      data_template:
+        title: 'Login Failure Detected!'
+        message: '{{ trigger.to_state.state }}'
+
+######## Lighting #########
+
+- alias: 'Living Room Lights On'
+  trigger:
+    platform: state
+    entity_id: group.household
+    to: 'home'
+  action:
+    service: light.turn_on
+    entity_id: group.living_room
+    data:
+      brightness: 255
+
+- alias: 'Living Room Lights Off'
+  trigger:
+    platform: state
+    entity_id: group.household
+    to: 'not_home'
+  action:
+    service: light.turn_off
+    entity_id: group.living_room
+
+- alias: 'Boys Radio'
+  trigger:
+    platform: time
+    at: '20:00:00'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.boys_radio
+    - delay: '03:55:00'
+    - service: switch.turn_off
+      entity_id: switch.boys_radio
+
+- alias: 'Boys Radio 2'
+  trigger:
+    platform: time
+    at: '00:05:00'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.boys_radio
+    - delay: '07:00:00'
+    - service: switch.turn_off
+      entity_id: switch.boys_radio
+
+- alias: 'Christmas Tree'
+  trigger:
+    platform: time
+    at: '00:00:00'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.christmas_tree
+
+######## Presence/Zone Detection #########
+
+- alias: 'Amanda Leave UT'
+  trigger:
+    platform: zone
+    event: leave
+    zone: zone.ut
+    entity_id: device_tracker.amandas_iphone
+  condition:
+    condition: time
+    after: '14:00'
+    before: '19:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    service: notify.ios_justins_iphone8
+    data:
+      message: 'Amanda has left work!'
+
+- alias: 'Justin Leave SCSO'
+  trigger:
+    platform: zone
+    event: leave
+    zone: zone.scso
+    entity_id: device_tracker.justins_iphone8
+  condition:
+    condition: time
+    after: '14:00'
+    before: '19:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    service: notify.ios_amandas_iphone
+    data:
+      message: 'JJ is headed home!'
+
+- alias: 'Amanda got the kids!'
+  trigger:
+    platform: zone
+    event: enter
+    zone: zone.eec
+    entity_id: device_tracker.amandas_iphone
+  condition:
+    condition: time
+    after: '15:00'
+    before: '18:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    service: notify.ios_justins_iphone8
+    data:
+      title: 'Guess What!?'
+      message: 'So you dont have to!'
+      data:
+        subtitle: 'Amanda got the Kids!'
+
+- alias: 'JJ picked up the kids!'
+  trigger:
+    platform: zone
+    event: enter
+    zone: zone.eec
+    entity_id: device_tracker.justins_iphone8
+  condition:
+    condition: time
+    after: '15:00'
+    before: '18:00'
+    weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+  action:
+    service: notify.ios_amandas_iphone
+    data:
+      title: 'Guess What!?'
+      message: 'So you dont have to!'
+      data:
+        subtitle: 'JJ got the Kiddos!'
+
+
+
+######## 3D Printer #########
+- alias: 'Printer Done'
+  trigger:
+    platform: state
+    entity_id: sensor.octoprint_job_percentage
+    to: '100'
+  action:
+    service: notify.ios_justins_iphone8
+    data:
+      message: 'Print Job Complete!'
+
+
+######## Currently Not In Use #########
+
+# works - but need to iron out presence detection 
+#
+#- alias: welcome home
+#  trigger:
+#    platform: state
+#    entity_id: device_tracker.iphone
+#    # Optional
+#    from: 'not_home'
+#    # Optional
+#    to: 'home'
+#  action:
+#    - service: notify.ios_iphone
+#      data:
+#        message: “Welcome Home!”
+#        data:
+#          push:
+#            sound: "US-EN-Morgan-Freeman-Welcome-Home.wav"
+
+# works but amanda doesnt like
+#
+#- alias: 'Living Room Lamps'
+#  trigger:
+#    platform: time
+#    at: '17:00:00'
+#  action:
+#    - service: light.turn_on
+#      entity_id: group.living_room
+#    - delay: '15:00:00'
+#    - service: light.turn_off
+#      entity_id: group.living_room
+
+

@@ -1,0 +1,62 @@
+###########################################################
+#
+# Home Assistant Sensors
+#
+############################################################
+
+- platform: darksky
+  api_key: !secret darksky_api
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  monitored_conditions:
+    - nearest_storm_distance
+
+- platform: yweather
+  monitored_conditions:
+    - weather_current
+    - temp_min
+    - temp_max
+    - wind_speed
+    - pressure
+    - visibility
+    - humidity
+    - temperature
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use
+      arg: /
+    - type: disk_free
+      arg: /
+    - type: memory_use
+    - type: memory_free
+    - type: processor_use
+    - type: since_last_boot
+    - type: ipv4_address
+      arg: eth0
+    - type: last_boot
+
+- platform: speedtest
+  minute: 30
+  hour:
+    - 0
+    - 6
+    - 12
+    - 18
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+
+
+- platform: octoprint
+  monitored_conditions:
+    - Current State
+    - Temperatures
+    - Job Percentage

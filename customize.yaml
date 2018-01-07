@@ -1,0 +1,200 @@
+###########################################################
+#
+# Home Assistant Customizations
+#
+############################################################
+
+
+############################################################
+#
+# Lights
+#
+############################################################
+
+  light.den_can_lights:
+    friendly_name: Recessed Lights
+    icon: mdi:lightbulb
+    
+  light.den_fan_light:
+    friendly_name: Fan Light
+    icon: mdi:lightbulb
+  
+  light.door_lamp:
+    friendly_name: Door Lamp
+    icon: mdi:lamp
+  
+  light.desk_lamp:
+    friendly_name: Desk Lamp
+    icon: mdi:lamp
+
+  light.side_door_light:
+    friendly_name: Side Door Light
+    icon: mdi:lightbulb
+
+
+############################################################
+#
+# Switches
+#
+############################################################
+  switch.den_fan:
+    friendly_name: Fan
+    icon: mdi:fan
+  switch.popcorn_light:
+    friendly_name: Popcorn Light
+    icon: mdi:popcorn
+  switch.desk_lights:
+    friendly_name: Desk Lights
+    icon: mdi:lightbulb
+  switch.patio_lights:
+    friendly_name: Patio Lights
+    icon: mdi:lightbulb
+  switch.fence_lights:
+    friendly_name: Fence Lights
+    icon: mdi:lightbulb
+  switch.living_room_lamp:
+    friendly_name: Door Lamp
+    icon: mdi:lightbulb
+  switch.desk_led:
+    icon: mdi:lightbulb
+  switch.boys_radio:
+    friendly_name: Boys Radio
+    icon: mdi:radio
+  switch.htpc:
+    friendly_name: HTPC
+    icon: mdi:desktop-classic
+  switch.justins_pc:
+    friendly_name: Justin's PC
+    icon: mdi:desktop-classic
+  switch.christmas_tree:
+    icon: mdi:pine-tree
+  switch.octopi:
+    friendly_name: CR10
+    icon: mdi:power-plug
+    
+
+############################################################
+#
+# Climate
+#
+############################################################
+
+  climate.home:
+    friendly_name: Nest
+    entity_picture: /local/Nest.jpg
+  sensor.home_thermostat_temperature:
+    friendly_name: Current Temp
+  sensor.home_thermostat_target:
+    friendly_name: Set Temp
+  binary_sensor.home_thermostat_fan:
+    friendly_name: Fan
+  binary_sensor.home_thermostat_has_leaf:
+    friendly_name: Leaf
+  binary_sensor.home_thermostat_online:
+    friendly_name: Online
+  binary_sensor.home_thermostat_is_locked:
+    friendly_name: Locked
+  binary_sensor.home_thermostat_is_using_emergency_heat:
+    friendly_name: Emergency Heat
+  sensor.home_thermostat_humidity:
+    friendly_name: Humidity
+  sensor.home_thermostat_hvac_state:
+    friendly_name: Current State
+  sensor.home_thermostat_operation_mode:
+    friendly_name: Mode
+
+############################################################
+#
+# Sensors
+#
+############################################################
+
+  sensor.dark_sky_nearest_storm_distance:
+    friendly_name: Nearest Storm Distance
+  sensor.yweather_current:
+    friendly_name: Current Condition
+    icon: mdi:weather-partlycloudy
+  sensor.yweather_humidity:
+    friendly_name: Humidity
+  sensor.yweather_pressure:
+    friendly_name: Pressure
+  sensor.yweather_temperature:
+    friendly_name: Current Temperature
+  sensor.yweather_temperature_max:
+    friendly_name: High
+  sensor.yweather_temperature_min:
+    friendly_name: Low
+  sensor.yweather_visibility:
+    friendly_name: Visibility
+  sensor.yweather_wind_speed:
+    friendly_name: Wind Speed
+  sensor.usps_packages:
+    friendly_name: USPS Package
+  sensor.usps_mail:
+    friendly_name: USPS Mail
+  sensor.speedtest_download:
+    friendly_name: Download
+    icon: mdi:download
+  sensor.speedtest_ping:
+    friendly_name: Ping
+  sensor.speedtest_upload:
+    friendly_name: Upload
+    icon: mdi:upload
+  sensor.octoprint_current_state:
+    friendly_name: Status
+    icon: mdi:printer-3d
+  sensor.octoprint_job_percentage:
+    friendly_name: Percent Complete
+    icon: mdi:percent
+  sensor.octoprint_actual_bed_temp:
+    friendly_name: Actual Bed Temp
+    value_template: "{{ ((states.sensor.octoprint_actual_bed_temp.state | float-32) | float*(5/9)) | round(0) }}"
+    unit_of_measurement: 'ºC'
+    icon: mdi:thermometer-lines
+  sensor.octoprint_target_bed_temp:
+    friendly_name: Target Bed Temp
+    value_template: "{{ ((states.sensor.octoprint_target_bed_temp.state | float-32) | float*(5/9)) | round(0) }}"
+    unit_of_measurement: 'ºC'
+    icon: mdi:thermometer-lines
+  sensor.octoprint_actual_tool0_temp:
+    friendly_name: Actual Hot End Temp
+    value_template: "{{ ((states.sensor.octoprint_actual_tool0_temp.state | float-32) | float*(5/9)) | round(0) }}"
+    unit_of_measurement: 'ºC'
+    icon: mdi:thermometer-lines
+  sensor.octoprint_target_tool0_temp:
+    friendly_name: Target Hot End Temp
+    value_template: "{{ ((states.sensor.octoprint_target_tool0_temp.state | float-32) | float*(5/9)) | round(0) }}"
+    unit_of_measurement: 'ºC'
+    icon: mdi:thermometer-lines
+
+
+############################################################
+#
+# Automations
+#
+############################################################
+
+  automation.amanda_got_the_kids:
+    friendly_name: Amanda got kids
+  automation.amanda_leave_ut:
+    friendly_name: Amanda left Work
+  automation.jj_picked_up_the_kids:
+    friendly_name: Justin Got Kids
+  automation.justin_leave_scso:
+    friendly_name: Justin Left Work
+  automation.living_room_lights_off:
+    friendly_name: LR Lights Off
+  automation.living_room_lights_on:
+    friendly_name: LR Lights On
+  automation.login_failure:
+    friendly_name: Login Failure
+
+############################################################
+#
+# Scenes
+#
+############################################################
+
+  scene.goodnight:
+    emulated_hue: true
+    emulated_hue_name: "goodnight"

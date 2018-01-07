@@ -1,0 +1,55 @@
+###########################################################
+#
+# Home Assistant Lights
+#
+############################################################
+
+- platform: mqtt
+  name: "Den Can Lights"
+  state_topic: "smartthings/Den Can Lights/switch/state"
+  command_topic: "smartthings/Den Can Lights/switch/cmd"
+  brightness_scale: 100
+  brightness_state_topic: "smartthings/Den Can Lights/level/state"
+  brightness_command_topic: "smartthings/Den Can Lights/level/cmd"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Den Fan Light"
+  state_topic: "smartthings/Den Fan Light/switch/state"
+  command_topic: "smartthings/Den Fan Light/switch/cmd"
+  brightness_scale: 100
+  brightness_state_topic: "smartthings/Den Fan Light/level/state"
+  brightness_command_topic: "smartthings/Den Fan Light/level/cmd"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Desk Lamp"
+  state_topic: "smartthings/LR Desk Lamp/switch/state"
+  command_topic: "smartthings/LR Desk Lamp/switch/cmd"
+  brightness_scale: 100
+  brightness_state_topic: "smartthings/LR Desk Lamp/level/state"
+  brightness_command_topic: "smartthings/LR Desk Lamp/level/cmd"
+  payload_on: "on"
+  payload_off: "off"
+
+- platform: mqtt
+  name: "Door Lamp"
+  state_topic: "smartthings/LR Door Lamp/switch/state"
+  command_topic: "smartthings/LR Door Lamp/switch/cmd"
+  brightness_scale: 100
+  brightness_state_topic: "smartthings/LR Door Lamp/level/state"
+  brightness_command_topic: "smartthings/LR Door Lamp/level/cmd"
+  payload_on: "on"
+  payload_off: "off"
+  
+- platform: mqtt
+  name: "Side Door Light"
+  state_topic: "smartthings/Side Door Light/switch/state"
+  command_topic: "smartthings/Side Door Light/switch/cmd"
+  brightness_scale: 100
+  brightness_state_topic: "smartthings/Side Door Light/level/state"
+  brightness_command_topic: "smartthings/Side Door Light/level/cmd"
+  payload_on: "on"
+  payload_off: "off"

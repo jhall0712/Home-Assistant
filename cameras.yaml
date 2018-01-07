@@ -1,0 +1,24 @@
+###########################################################
+#
+# Home Assistant Cameras
+#
+############################################################
+
+# Security
+- platform: generic
+  still_image_url: !secret ip_cam_url
+  name: Carport
+
+# Weather
+- platform: generic
+  still_image_url: !secret weather_url
+  name: !secret weather_name
+
+# Mail
+#- platform: usps
+#  scan_interval: 5
+
+# 3D Printer
+- platform: mjpeg
+  mjpeg_url: !secret octopi_cam
+  name: 3D Printer

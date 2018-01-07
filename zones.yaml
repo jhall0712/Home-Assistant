@@ -1,0 +1,41 @@
+###########################################################
+#
+# Home Assistant Zones
+#
+############################################################
+
+- zone:
+  name: M&D
+  latitude: !secret md_lat
+  longitude: !secret md_long
+  radius: 75
+  icon: mdi:home-outline
+
+- zone 2:
+  name: SCSO
+  latitude: !secret scso_lat
+  longitude: !secret scso_long
+  radius: 200
+  icon: mdi:star-circle
+
+# This will override the default home zone
+- zone 3:
+  name: Home
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  radius: 200
+  icon: mdi:account-multiple
+  
+- zone 4:
+  name: UT
+  latitude: !secret ut_lat
+  longitude: !secret ut_long
+  radius: 300
+  icon: mdi:briefcase
+
+- zone 5:
+  name: EEC
+  latitude: !secret eec_lat
+  longitude: !secret eec_long
+  radius: 100
+  icon: mdi:bus-school

@@ -1,0 +1,124 @@
+###########################################################
+#
+# Home Assistant
+#
+############################################################
+
+homeassistant:
+  name: Home
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  elevation: 177
+  unit_system: imperial
+  time_zone: America/Chicago
+  customize: !include customize.yaml
+
+frontend:
+  themes: !include themes.yaml
+
+config:
+discovery:
+  ignore:
+    - plex_mediaserver
+conversation:
+history:
+logbook:
+sun:
+updater:
+map:
+
+http:
+  api_password: !secret ha_pass
+  base_url: !secret ha_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+
+tts:
+  - platform: google
+
+#############################################################
+#
+# Includes
+#
+#############################################################
+
+sensor: !include sensors.yaml
+group: !include groups.yaml
+zone: !include zones.yaml
+switch: !include switches.yaml
+camera: !include cameras.yaml
+automation: !include automations.yaml
+scene: !include scenes.yaml
+light: !include lights.yaml
+
+
+
+#############################################################
+#
+# Components
+#
+#############################################################
+
+
+# Nest Thermostat
+nest:
+  client_id: !secret nest_id
+  client_secret: !secret nest_secret
+
+# Device Tracker
+device_tracker:
+
+
+# Media Players
+media_player:
+  - platform: pioneer
+    name: Pioneer VSX-1121
+    host: !secret pioneer_ip
+    
+  - platform: kodi
+    host: !secret kodi_ip
+    port: 8080
+    username: !secret kodi_user
+    password: !secret kodi_pass
+
+# Amazon Echo
+emulated_hue:
+  type: alexa
+  host_ip: !secret echo_ip
+  listen_port: 8300
+  off_maps_to_on_domains:
+    - script
+    - scene
+  expose_by_default: true
+
+# iOS App
+ios:
+notify:
+
+# USPS Informed Delivery
+#usps:
+#    username: !secret usps_user
+#    password: !secret usps_pass
+
+# Zigbee
+#zha:
+#  usb_path: /dev/ttyUSB1
+#  database_path: /home/homeassistant/.homeassistant/zigbee.db
+
+# Zwave
+#zwave:
+#  usb_path: /dev/ttyUSB0
+
+#MQTT
+mqtt:
+  broker: localhost
+  port: 1883
+
+#Wake on LAN
+wake_on_lan:
+
+octoprint:
+  host: !secret octopi_ip
+  api_key: !secret octopi_api
+  bed: true
+  number_of_tools: 1

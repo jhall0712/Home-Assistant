@@ -1,0 +1,43 @@
+###########################################################
+#
+# Home Assistant Scenes
+#
+############################################################
+
+
+###### Goodnight ######
+
+- name: Goodnight
+  entities:
+    light.den_can_lights: off
+    switch.desk_lights:
+      state: off
+    switch.popcorn_light:
+      state: off
+    switch.desk_led:
+      state: off
+    switch.patio_lights:
+      state: off
+    switch.fence_lights:
+      state: off
+    switch.den_fan:
+      state: off
+    light.door_lamp:
+      state: on
+      brightness: 30
+    light.desk_lamp:
+      state: on
+      brightness: 30
+    media_player.pioneer_vsx1121:
+      state: off
+
+- name: Movie Mode
+  entities:
+    light.den_can_lights: off
+    switch.desk_lights:
+      state: off
+    light.den_fan_light: off
+    media_player.pioneer_vsx1121:
+      state: on
+    switch.popcorn_light:
+      state: on
