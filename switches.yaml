@@ -1,0 +1,73 @@
+###########################################################
+#
+# Home Assistant Switches
+#
+############################################################
+
+# RF Switches
+- platform: rpi_rf
+  gpio: 17
+  switches:
+    Christmas Tree:
+      protocol: 1
+      pulselength: 175
+      code_on: 333571
+      code_off: 333580
+#    Desk Lights:
+#      protocol: 1
+#      pulselength: 175
+#      code_on: 333107,333251
+#      code_off: 333116,333260
+    Fence Lights:
+      protocol: 1
+      pulselength: 180
+      code_on: 1398067
+      code_off: 1398076
+    Patio Lights:
+      protocol: 1
+      pulselength: 181
+      code_on: 1398211
+      code_off: 1398220
+#    Boys Radio:
+#      protocol: 1
+#      pulselength: 181
+#      code_on: 1398531
+#      code_off: 1398540
+#      signal_repetitions: 15
+    Desk LED:
+      protocol: 1
+      pulselength: 411
+      code_on: 3892481
+      code_off: 3892481
+
+#MQTT
+- platform: mqtt
+  name: "Den Fan"
+  state_topic: "smartthings/Den Fan/switch/state"
+  command_topic: "smartthings/Den Fan/switch/cmd"
+  payload_on: "on"
+  payload_off: "off"
+
+#Wake on Lan
+- platform: wake_on_lan
+  mac_address: !secret htpc_mac
+  name: HTPC
+  host: !secret htpc_ip
+
+- platform: wake_on_lan
+  mac_address: !secret jj_mac
+  name: Justin's PC
+  host: !secret jj_ip
+
+# TP Link Smart Plugs
+- platform: tplink
+  host: !secret tp_1
+
+- platform: tplink
+  host: !secret tp_2
+
+- platform: tplink
+  host: !secret tp_3
+  
+- platform: tplink
+  host: !secret tp_4
